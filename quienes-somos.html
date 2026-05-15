@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos — GOviajes</title>
+    <meta name="description" content="Conocé la historia de GOviajes, la plataforma de movilidad local que nació para simplificar los traslados en el norte argentino.">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ── VALORES ── */
+        .values-grid {
+            max-width: 1000px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+            gap: 1.5rem;
+        }
+        .value-card {
+            background: linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 18px; padding: 2rem;
+            transition: all .35s;
+        }
+        .value-card:hover {
+            border-color: rgba(0,212,255,.2);
+            background: linear-gradient(135deg,rgba(0,212,255,.05),rgba(138,77,255,.04));
+            transform: translateY(-5px);
+        }
+        .value-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+        .value-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; }
+        .value-card p { color: rgba(255,255,255,.55); font-size: .9rem; line-height: 1.7; }
+
+        /* ── MISIÓN/VISIÓN ── */
+        .mv-grid {
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .mv-card {
+            border-radius: 20px; padding: 2.5rem;
+            position: relative; overflow: hidden;
+        }
+        .mv-card.mision {
+            background: linear-gradient(135deg,rgba(0,212,255,.08),rgba(22,119,255,.06));
+            border: 1px solid rgba(0,212,255,.18);
+        }
+        .mv-card.vision {
+            background: linear-gradient(135deg,rgba(138,77,255,.08),rgba(22,119,255,.06));
+            border: 1px solid rgba(138,77,255,.18);
+        }
+        .mv-card .mv-label {
+            font-size: .75rem; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: .8rem;
+        }
+        .mv-card.mision .mv-label { color: var(--cian); }
+        .mv-card.vision .mv-label { color: var(--violeta); }
+        .mv-card h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; }
+        .mv-card p { color: rgba(255,255,255,.65); line-height: 1.75; font-size: .97rem; }
+
+        /* ── HISTORIA ── */
+        .history-section { background: rgba(0,0,0,.15); }
+        .history-content {
+            max-width: 800px; margin: 0 auto;
+            display: flex; flex-direction: column; gap: 2rem;
+        }
+        .history-block {
+            display: flex; gap: 1.5rem; align-items: flex-start;
+        }
+        .history-year {
+            min-width: 70px;
+            font-size: 1.4rem; font-weight: 900;
+            background: linear-gradient(135deg,var(--cian),var(--violeta));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            padding-top: .15rem;
+        }
+        .history-block h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .5rem; }
+        .history-block p { color: rgba(255,255,255,.58); font-size: .95rem; line-height: 1.75; }
+
+        /* ── CTA ── */
+        .cta-simple {
+            padding: 6rem 6%; text-align: center;
+            background: rgba(0,212,255,.03);
+            border-top: 1px solid rgba(0,212,255,.08);
+        }
+        .cta-simple h2 { font-size: clamp(1.6rem,3.5vw,2.6rem); font-weight: 800; margin-bottom: 1rem; }
+        .cta-simple p { color: rgba(255,255,255,.55); margin-bottom: 2rem; font-size: 1.05rem; }
+        .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        @media (max-width: 640px) {
+            .mv-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+    <a href="index.html" class="nav-logo">
+        <div class="nav-logo-img">
+            <img src="assets/Logo iluminado.jpeg" alt="GOviajes">
+        </div>
+        <span class="nav-logo-text">GOviajes</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quienes-somos.html" class="active">Quiénes Somos</a></li>
+        <li><a href="index.html#ciudades">Ciudades</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="https://wa.me/5493878831102" class="nav-cta">💬 WhatsApp</a></li>
+    </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div class="page-hero-content">
+        <div class="sec-label">Quiénes Somos</div>
+        <h1>La movilidad local<br><span class="grad">reimaginada</span></h1>
+        <p>Nacimos para simplificar cómo se mueve la gente en el norte argentino. Sin complicaciones, sin apps, con atención humana y cercana.</p>
+    </div>
+</div>
+
+<!-- MISIÓN Y VISIÓN -->
+<section class="section">
+    <div class="sec-head">
+        <div class="sec-label">Propósito</div>
+        <h2 class="sec-title">Lo que nos mueve<br><span class="grad">cada día</span></h2>
+    </div>
+    <div class="mv-grid">
+        <div class="mv-card mision">
+            <div class="mv-label">Misión</div>
+            <h3>Simplificar la movilidad local</h3>
+            <p>Ofrecer un servicio de traslados accesible, confiable y moderno para los habitantes del norte argentino, eliminando las barreras tecnológicas y conectando a las personas con conductores de confianza a través de la plataforma que ya usan todos: WhatsApp.</p>
+        </div>
+        <div class="mv-card vision">
+            <div class="mv-label">Visión</div>
+            <h3>Ser la red de movilidad del norte</h3>
+            <p>Convertirnos en la plataforma de referencia para la movilidad en el norte argentino, expandiendo nuestra presencia a cada ciudad y pueblo de la región, y siendo sinónimo de traslados seguros, prácticos y con identidad local.</p>
+        </div>
+    </div>
+</section>
+
+<!-- HISTORIA -->
+<section class="section history-section">
+    <div class="sec-head">
+        <div class="sec-label">Historia</div>
+        <h2 class="sec-title">De dónde venimos<br><span class="grad">y hacia dónde vamos</span></h2>
+    </div>
+    <div class="history-content">
+        <div class="history-block">
+            <div class="history-year">2024</div>
+            <div>
+                <h3>La idea nace en Orán</h3>
+                <p>GOviajes nació de una necesidad real: en el norte argentino, pedir un traslado confiable era complicado. Sin apps conocidas que cubran la región y con pocas opciones formales, surgió la idea de crear una solución local, simple y accesible para todos.</p>
+            </div>
+        </div>
+        <div class="history-block">
+            <div class="history-year">2025</div>
+            <div>
+                <h3>Primeras ciudades y primeros pasajeros</h3>
+                <p>Lanzamos operaciones en Orán, Pichanal y Embarcación, conectando a los primeros pasajeros con conductores verificados de la zona. La respuesta fue inmediata: la comunidad abrazó la propuesta porque se sentía propia, cercana y sin vueltas.</p>
+            </div>
+        </div>
+        <div class="history-block">
+            <div class="history-year">Hoy</div>
+            <div>
+                <h3>6 ciudades y creciendo</h3>
+                <p>Hoy estamos presentes en Orán, Yrigoyen, Pichanal, Embarcación, Colonia Santa Rosa y Aguas Blancas. Seguimos expandiéndonos con el mismo espíritu de siempre: tecnología al servicio de la gente, sin dejar de ser locales.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VALORES -->
+<section class="section">
+    <div class="sec-head">
+        <div class="sec-label">Valores</div>
+        <h2 class="sec-title">Los principios que<br><span class="grad">nos definen</span></h2>
+    </div>
+    <div class="values-grid">
+        <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <h3>Confianza</h3>
+            <p>Conductores verificados y atención personalizada. Cada viaje es una responsabilidad que tomamos en serio.</p>
+        </div>
+        <div class="value-card">
+            <div class="value-icon">✨</div>
+            <h3>Simplicidad</h3>
+            <p>Sin apps, sin formularios, sin complicaciones. Creemos que lo mejor siempre es lo más simple.</p>
+        </div>
+        <div class="value-card">
+            <div class="value-icon">📍</div>
+            <h3>Identidad Local</h3>
+            <p>Somos del norte, conocemos el norte. Eso nos permite ofrecer un servicio que entiende las necesidades reales de la región.</p>
+        </div>
+        <div class="value-card">
+            <div class="value-icon">🚀</div>
+            <h3>Innovación</h3>
+            <p>Usamos tecnología moderna para resolver problemas cotidianos. WhatsApp no es una limitación, es nuestra ventaja.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-simple">
+    <h2>¿Querés sumarte al equipo<br><span class="grad">de conductores?</span></h2>
+    <p>Si sos conductor de la zona y querés trabajar con nosotros, escribinos. Siempre estamos buscando incorporar gente comprometida.</p>
+    <div class="cta-btns">
+        <a href="https://wa.me/5493878831102" class="btn-wa">💬 Contactar por WhatsApp</a>
+        <a href="contacto.html" class="btn-ghost">Ver más info →</a>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div class="footer-brand">
+            <div class="footer-logo-img">
+                <img src="assets/Logo iluminado.jpeg" alt="GOviajes">
+            </div>
+            <p>Tecnología local para moverte mejor. Conectamos pasajeros con conductores en el norte argentino.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Empresa</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                <li><a href="index.html#ciudades">Ciudades</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="terminos.html">Términos de Servicio</a></li>
+                <li><a href="privacidad.html">Política de Privacidad</a></li>
+                <li><a href="https://instagram.com/goviajes.arg" target="_blank">Instagram</a></li>
+                <li><a href="mailto:augustocastroo38@gmail.com">Email</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 GOviajes · Norte Argentino · Todos los derechos reservados</p>
+        <div class="footer-social">
+            <a href="https://instagram.com/goviajes.arg" target="_blank" title="Instagram">📸</a>
+            <a href="https://wa.me/5493878831102" title="WhatsApp">💬</a>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/5493878831102" class="fab" title="Pedir viaje">💬</a>
+
+<script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+</script>
+</body>
+</html>

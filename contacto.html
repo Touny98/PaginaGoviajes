@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto — GOviajes</title>
+    <meta name="description" content="Contactá a GOviajes por WhatsApp, email o Instagram. Estamos disponibles 24/7 para coordinar tus traslados en el norte argentino.">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ── GRILLA DE CONTACTO ── */
+        .contact-grid {
+            max-width: 1000px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .contact-card {
+            background: linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 20px; padding: 2.2rem;
+            display: flex; flex-direction: column; gap: 1rem;
+            transition: all .35s; text-decoration: none; color: inherit;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0,212,255,.2);
+            background: linear-gradient(135deg,rgba(0,212,255,.05),rgba(138,77,255,.04));
+            box-shadow: 0 20px 50px rgba(0,0,0,.25);
+        }
+        .contact-card.wa-card { border-color: rgba(37,211,102,.2); }
+        .contact-card.wa-card:hover {
+            border-color: rgba(37,211,102,.4);
+            background: linear-gradient(135deg,rgba(37,211,102,.06),rgba(18,140,126,.04));
+        }
+        .contact-icon { font-size: 2.8rem; }
+        .contact-card h3 { font-size: 1.25rem; font-weight: 700; }
+        .contact-card p { color: rgba(255,255,255,.55); font-size: .93rem; line-height: 1.7; flex-grow: 1; }
+        .contact-card .contact-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: .9rem; font-weight: 600;
+            color: var(--cian);
+        }
+        .contact-card.wa-card .contact-link { color: #25D366; }
+
+        /* ── FORMULARIO ── */
+        .form-section { background: rgba(0,0,0,.15); }
+        .form-wrap {
+            max-width: 640px; margin: 0 auto;
+        }
+        .form-group { margin-bottom: 1.4rem; }
+        .form-group label {
+            display: block;
+            font-size: .85rem; font-weight: 600;
+            color: rgba(255,255,255,.6);
+            margin-bottom: .5rem;
+            letter-spacing: .5px;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 12px;
+            padding: .85rem 1.1rem;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: .97rem;
+            transition: border-color .3s, background .3s;
+            outline: none;
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: rgba(255,255,255,.3); }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: rgba(0,212,255,.4);
+            background: rgba(0,212,255,.04);
+        }
+        .form-group textarea { resize: vertical; min-height: 130px; }
+        .form-group select option { background: #0A0F2B; color: #fff; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg,var(--cian),var(--azul));
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 1rem;
+            font-size: 1rem; font-weight: 700;
+            cursor: pointer;
+            transition: opacity .3s, transform .3s;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-submit:hover { opacity: .88; transform: translateY(-2px); }
+        .form-note {
+            text-align: center;
+            color: rgba(255,255,255,.35);
+            font-size: .82rem;
+            margin-top: 1rem;
+        }
+
+        /* ── CIUDADES ── */
+        .coverage-note {
+            max-width: 800px; margin: 0 auto 0;
+            background: rgba(0,212,255,.04);
+            border: 1px solid rgba(0,212,255,.12);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+        .coverage-note p {
+            color: rgba(255,255,255,.6);
+            font-size: .97rem;
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+        .coverage-chips { display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; }
+        .c-chip {
+            background: rgba(0,212,255,.08);
+            border: 1px solid rgba(0,212,255,.2);
+            padding: 5px 14px; border-radius: 50px;
+            font-size: .82rem; color: var(--cian);
+            font-weight: 600;
+        }
+
+        @media (max-width: 640px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+    <a href="index.html" class="nav-logo">
+        <div class="nav-logo-img">
+            <img src="assets/Logo iluminado.jpeg" alt="GOviajes">
+        </div>
+        <span class="nav-logo-text">GOviajes</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+        <li><a href="index.html#ciudades">Ciudades</a></li>
+        <li><a href="contacto.html" class="active">Contacto</a></li>
+        <li><a href="https://wa.me/5493878831102" class="nav-cta">💬 WhatsApp</a></li>
+    </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div class="page-hero-content">
+        <div class="sec-label">Contacto</div>
+        <h1>Estamos para<br><span class="grad">ayudarte</span></h1>
+        <p>Cualquier consulta, reserva o información la resolvemos rápido. Elegí el canal que más te convenga.</p>
+    </div>
+</div>
+
+<!-- CANALES DE CONTACTO -->
+<section class="section">
+    <div class="sec-head">
+        <div class="sec-label">Canales</div>
+        <h2 class="sec-title">Hablemos por donde<br><span class="grad">más te guste</span></h2>
+    </div>
+    <div class="contact-grid">
+        <a href="https://wa.me/5493878831102" target="_blank" class="contact-card wa-card">
+            <div class="contact-icon">💬</div>
+            <h3>WhatsApp</h3>
+            <p>La forma más rápida de pedir un viaje o hacer una consulta. Respondemos en minutos, todos los días.</p>
+            <span class="contact-link">Escribir ahora →</span>
+        </a>
+        <a href="https://instagram.com/goviajes.arg" target="_blank" class="contact-card">
+            <div class="contact-icon">📸</div>
+            <h3>Instagram</h3>
+            <p>Seguinos en @goviajes.arg para novedades, ciudades nuevas y contenido de la comunidad GOviajes.</p>
+            <span class="contact-link">Ver perfil →</span>
+        </a>
+        <a href="mailto:augustocastroo38@gmail.com" class="contact-card">
+            <div class="contact-icon">📧</div>
+            <h3>Email</h3>
+            <p>Para consultas formales, sugerencias, reclamos o propuestas de colaboración. Respondemos en 24–48 hs.</p>
+            <span class="contact-link">augustocastroo38@gmail.com →</span>
+        </a>
+        <div class="contact-card">
+            <div class="contact-icon">🕐</div>
+            <h3>Horario de atención</h3>
+            <p>Atendemos por WhatsApp las 24 horas, los 7 días de la semana. Para email y redes, el horario de respuesta es de lunes a sábado de 8 a 22 hs.</p>
+            <span class="contact-link" style="color:rgba(255,255,255,.4)">Siempre disponibles</span>
+        </div>
+    </div>
+</section>
+
+<!-- FORMULARIO DE CONTACTO -->
+<section class="section form-section">
+    <div class="sec-head">
+        <div class="sec-label">Formulario</div>
+        <h2 class="sec-title">Envianos un<br><span class="grad">mensaje</span></h2>
+        <p class="sec-sub">Completá el formulario y te respondemos a la brevedad.</p>
+    </div>
+    <div class="form-wrap">
+        <form action="mailto:augustocastroo38@gmail.com" method="GET" enctype="text/plain">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono / WhatsApp</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="+54 ...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="motivo">Motivo del contacto</label>
+                <select id="motivo" name="subject">
+                    <option value="Consulta general">Consulta general</option>
+                    <option value="Quiero ser conductor">Quiero ser conductor</option>
+                    <option value="Problema con un viaje">Problema con un viaje</option>
+                    <option value="Sugerencia">Sugerencia o feedback</option>
+                    <option value="Prensa / colaboracion">Prensa o colaboración</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="body" placeholder="Contanos en qué podemos ayudarte..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Enviar mensaje →</button>
+            <p class="form-note">También podés escribirnos directo por <a href="https://wa.me/5493878831102" style="color:var(--cian)">WhatsApp</a> si preferís respuesta inmediata.</p>
+        </form>
+    </div>
+</section>
+
+<!-- COBERTURA -->
+<section class="section" style="padding-top:0">
+    <div class="coverage-note">
+        <p>Operamos en las principales ciudades del norte argentino. Si tu ciudad no está en la lista, escribinos — estamos en constante expansión.</p>
+        <div class="coverage-chips">
+            <span class="c-chip">Orán</span>
+            <span class="c-chip">Yrigoyen</span>
+            <span class="c-chip">Pichanal</span>
+            <span class="c-chip">Embarcación</span>
+            <span class="c-chip">Colonia Santa Rosa</span>
+            <span class="c-chip">Aguas Blancas</span>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div class="footer-brand">
+            <div class="footer-logo-img">
+                <img src="assets/Logo iluminado.jpeg" alt="GOviajes">
+            </div>
+            <p>Tecnología local para moverte mejor. Conectamos pasajeros con conductores en el norte argentino.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Empresa</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                <li><a href="index.html#ciudades">Ciudades</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="terminos.html">Términos de Servicio</a></li>
+                <li><a href="privacidad.html">Política de Privacidad</a></li>
+                <li><a href="https://instagram.com/goviajes.arg" target="_blank">Instagram</a></li>
+                <li><a href="mailto:augustocastroo38@gmail.com">Email</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 GOviajes · Norte Argentino · Todos los derechos reservados</p>
+        <div class="footer-social">
+            <a href="https://instagram.com/goviajes.arg" target="_blank" title="Instagram">📸</a>
+            <a href="https://wa.me/5493878831102" title="WhatsApp">💬</a>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/5493878831102" class="fab" title="Pedir viaje">💬</a>
+
+<script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+</script>
+</body>
+</html>

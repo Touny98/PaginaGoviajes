@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(node scrape-instagram.js goviajes.arg)",
+      "Bash(npx playwright *)",
+      "WebFetch(domain:www.instagram.com)",
+      "Bash(Start-Process \"c:\\\\Users\\\\Usuario\\\\Desktop\\\\PaginaGoviajes\\\\index.html\")",
+      "PowerShell(Start-Process \"c:\\\\Users\\\\Usuario\\\\Desktop\\\\PaginaGoviajes\\\\index.html\")",
+      "Bash(git reset *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
+    ]
+  }
+}

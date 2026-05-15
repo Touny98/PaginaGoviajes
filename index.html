@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOviajes — Movilidad Local del Norte Argentino</title>
+    <meta name="description" content="GOviajes conecta pasajeros con conductores en Orán, Pichanal, Embarcación y más ciudades del norte argentino. Sin app, todo por WhatsApp.">
+    <meta name="keywords" content="viajes norte argentino, remis Orán, traslados Salta, movilidad Embarcación, GOviajes">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: url('assets/Posible estilo.png') center/cover no-repeat;
+            filter: brightness(.42);
+        }
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg,
+                rgba(10,15,43,.75) 0%,
+                rgba(10,15,43,.3) 55%,
+                rgba(138,77,255,.2) 100%);
+        }
+        .hero-content {
+            position: relative; z-index: 2;
+            text-align: center;
+            padding: 0 6%;
+            max-width: 940px;
+        }
+
+        /* Logo iluminado sin fondo (mix-blend-mode: screen sobre oscuro) */
+        .hero-logo-wrap {
+            width: 130px; height: 130px;
+            margin: 0 auto 2rem;
+            background: #02061A;
+            border-radius: 26px;
+            overflow: hidden;
+            box-shadow:
+                0 0 40px rgba(0,212,255,.5),
+                0 0 80px rgba(138,77,255,.25);
+        }
+        .hero-logo-wrap img {
+            width: 130px; height: 130px;
+            object-fit: cover;
+            mix-blend-mode: screen;
+            display: block;
+        }
+
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0,212,255,.08);
+            border: 1px solid rgba(0,212,255,.28);
+            padding: 6px 16px; border-radius: 50px;
+            font-size: .8rem; color: var(--cian);
+            font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+            margin-bottom: 1.4rem;
+        }
+        .hero h1 {
+            font-size: clamp(2.4rem,5.5vw,4.8rem);
+            font-weight: 900; line-height: 1.08;
+            letter-spacing: -1px; margin-bottom: 1.4rem;
+        }
+        .hero p.sub {
+            font-size: clamp(.95rem,1.8vw,1.15rem);
+            color: rgba(255,255,255,.72);
+            max-width: 580px; margin: 0 auto 2.5rem;
+            line-height: 1.78;
+        }
+        .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        .city-chips { margin-top: 2.5rem; display: flex; gap: .5rem; justify-content: center; flex-wrap: wrap; }
+        .chip {
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.12);
+            padding: 5px 13px; border-radius: 50px;
+            font-size: .78rem; color: rgba(255,255,255,.62);
+        }
+
+        /* ── STATS ── */
+        .stats {
+            padding: 3.5rem 6%;
+            background: rgba(255,255,255,.02);
+            border-top: 1px solid rgba(255,255,255,.05);
+            border-bottom: 1px solid rgba(255,255,255,.05);
+        }
+        .stats-grid {
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+            gap: 2rem; text-align: center;
+        }
+        .stat h3 {
+            font-size: 2.4rem; font-weight: 900;
+            background: linear-gradient(135deg,var(--cian),var(--violeta));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .stat p { color: rgba(255,255,255,.5); font-size: .88rem; margin-top: .2rem; }
+
+        /* ── SERVICIOS ── */
+        .cards {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 20px; padding: 2.2rem;
+            position: relative; overflow: hidden;
+            transition: all .4s;
+        }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg,var(--cian),var(--violeta));
+            opacity: 0; transition: opacity .4s;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(0,212,255,.2);
+            background: linear-gradient(135deg,rgba(0,212,255,.05),rgba(138,77,255,.04));
+            box-shadow: 0 20px 55px rgba(0,0,0,.3), 0 0 35px rgba(0,212,255,.08);
+        }
+        .card:hover::before { opacity: 1; }
+        .card-icon {
+            width: 56px; height: 56px;
+            background: linear-gradient(135deg,rgba(0,212,255,.12),rgba(138,77,255,.12));
+            border: 1px solid rgba(0,212,255,.18);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.7rem; margin-bottom: 1.3rem;
+        }
+        .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: .6rem; }
+        .card p { color: rgba(255,255,255,.56); line-height: 1.72; font-size: .93rem; }
+
+        /* ── CIUDADES ── */
+        .cities-section { background: linear-gradient(180deg,rgba(0,212,255,.025) 0%,rgba(0,0,0,0) 100%); }
+        .city-grid {
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+            gap: 1rem;
+        }
+        .city-row {
+            background: rgba(255,255,255,.025);
+            border: 1px solid rgba(255,255,255,.06);
+            border-radius: 14px; padding: 1.3rem 1.6rem;
+            display: flex; align-items: center; gap: 1rem;
+            transition: all .3s;
+        }
+        .city-row:hover { background: rgba(0,212,255,.05); border-color: rgba(0,212,255,.18); transform: translateX(6px); }
+        .dot {
+            width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0;
+            background: linear-gradient(135deg,var(--cian),var(--violeta));
+            box-shadow: 0 0 10px rgba(0,212,255,.6);
+        }
+        .city-row h4 { font-size: 1.05rem; font-weight: 600; }
+        .city-row span { color: rgba(255,255,255,.42); font-size: .78rem; display: block; margin-top: .15rem; }
+
+        /* ── CÓMO FUNCIONA ── */
+        .how-section { background: rgba(0,0,0,.18); }
+        .steps {
+            max-width: 860px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+            gap: 2rem; text-align: center;
+        }
+        .step-num {
+            width: 62px; height: 62px;
+            background: linear-gradient(135deg,var(--cian),var(--violeta));
+            border-radius: 50%; font-size: 1.5rem; font-weight: 900;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.3rem;
+            box-shadow: 0 0 28px rgba(0,212,255,.4);
+        }
+        .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .6rem; }
+        .step p { color: rgba(255,255,255,.52); font-size: .9rem; line-height: 1.72; }
+
+        /* ── BANDA WA ── */
+        .wa-band {
+            padding: 5rem 6%; text-align: center;
+            background: linear-gradient(135deg,rgba(37,211,102,.04),rgba(18,140,126,.04));
+            border-top: 1px solid rgba(37,211,102,.1);
+            border-bottom: 1px solid rgba(37,211,102,.1);
+        }
+        .wa-band .big { font-size: 3.5rem; margin-bottom: .8rem; }
+        .wa-band h2 { font-size: clamp(1.7rem,3.5vw,2.6rem); font-weight: 800; margin-bottom: 1rem; }
+        .wa-band p { color: rgba(255,255,255,.62); font-size: 1.05rem; max-width: 480px; margin: 0 auto 2rem; line-height: 1.75; }
+
+        /* ── CTA FINAL ── */
+        .cta-section {
+            padding: 8rem 6%; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .cta-section::before {
+            content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+            width: 700px; height: 700px;
+            background: radial-gradient(circle,rgba(0,212,255,.07) 0%,transparent 70%);
+            pointer-events: none;
+        }
+        .cta-section::after {
+            content: ''; position: absolute; top: 50%; left: 65%; transform: translate(-50%,-50%);
+            width: 500px; height: 500px;
+            background: radial-gradient(circle,rgba(138,77,255,.06) 0%,transparent 70%);
+            pointer-events: none;
+        }
+        .cta-inner { position: relative; z-index: 1; }
+        .cta-section h2 { font-size: clamp(2rem,5vw,4rem); font-weight: 900; margin-bottom: .8rem; }
+        .cta-section p { color: rgba(255,255,255,.52); font-size: 1.05rem; margin-bottom: 2.5rem; }
+        .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        @media (max-width: 768px) {
+            .hero-btns, .cta-btns { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+    <a href="index.html" class="nav-logo">
+        <div class="nav-logo-img">
+            <img src="assets/Logo iluminado.jpeg" alt="GOviajes">
+        </div>
+        <span class="nav-logo-text">GOviajes</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+        <li><a href="index.html#ciudades">Ciudades</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="https://wa.me/5493878831102" class="nav-cta">💬 WhatsApp</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <div class="hero-logo-wrap">
+            <img src="assets/Logo iluminado.jpeg" alt="GOviajes">
+        </div>
+        <div class="hero-badge">🚀 Tecnología Local · Norte Argentino</div>
+        <h1>Movilidad <span class="grad">simple y moderna</span><br>para el norte</h1>
+        <p class="sub">Conectamos pasajeros con conductores en distintas ciudades del norte argentino. Sin app complicada, sin vueltas. Todo por WhatsApp.</p>
+        <div class="hero-btns">
+            <a href="https://wa.me/5493878831102" class="btn-wa">💬 Pedir viaje por WhatsApp</a>
+            <a href="#como-funciona" class="btn-ghost">¿Cómo funciona? →</a>
+        </div>
+        <div class="city-chips">
+            <span class="chip">📍 Orán</span>
+            <span class="chip">📍 Yrigoyen</span>
+            <span class="chip">📍 Pichanal</span>
+            <span class="chip">📍 Embarcación</span>
+            <span class="chip">📍 Colonia Santa Rosa</span>
+            <span class="chip">📍 Aguas Blancas</span>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+    <div class="stats-grid">
+        <div class="stat"><h3>6+</h3><p>Ciudades del Norte</p></div>
+        <div class="stat"><h3>24/7</h3><p>Atención por WhatsApp</p></div>
+        <div class="stat"><h3>0</h3><p>Apps que descargar</p></div>
+        <div class="stat"><h3>100%</h3><p>Experiencia local</p></div>
+    </div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+    <div class="sec-head">
+        <div class="sec-label">Servicios</div>
+        <h2 class="sec-title">Movilidad pensada<br><span class="grad">para tu día a día</span></h2>
+        <p class="sec-sub">Simple, cercana y moderna. Así es GOviajes.</p>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <div class="card-icon">🏙️</div>
+            <h3>Viajes Locales</h3>
+            <p>Traslados dentro de tu ciudad. Rápido, seguro y a un mensaje de distancia. Conductor confirmado en minutos.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🛣️</div>
+            <h3>Viajes Multiciudad</h3>
+            <p>Conectamos las principales ciudades del norte. Orán, Embarcación, Pichanal y más destinos interurbanos con conductores verificados.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">💬</div>
+            <h3>Sin App Complicada</h3>
+            <p>Todo por WhatsApp. Sin registros, sin contraseñas, sin descargas. Pedilo como mandás un mensaje.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CIUDADES -->
+<section class="section cities-section" id="ciudades">
+    <div class="sec-head">
+        <div class="sec-label">Cobertura</div>
+        <h2 class="sec-title">Presentes en el<br><span class="grad">Norte Argentino</span></h2>
+        <p class="sec-sub">Nos movemos donde vos te movés.</p>
+    </div>
+    <div class="city-grid">
+        <div class="city-row"><div class="dot"></div><div><h4>Orán</h4><span>Ciudad principal · cobertura completa</span></div></div>
+        <div class="city-row"><div class="dot"></div><div><h4>Yrigoyen</h4><span>Viajes locales y multiciudad</span></div></div>
+        <div class="city-row"><div class="dot"></div><div><h4>Pichanal</h4><span>Viajes locales y multiciudad</span></div></div>
+        <div class="city-row"><div class="dot"></div><div><h4>Embarcación</h4><span>Viajes locales y multiciudad</span></div></div>
+        <div class="city-row"><div class="dot"></div><div><h4>Colonia Santa Rosa</h4><span>Viajes locales y multiciudad</span></div></div>
+        <div class="city-row"><div class="dot"></div><div><h4>Aguas Blancas</h4><span>Viajes locales y multiciudad</span></div></div>
+    </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section class="section how-section" id="como-funciona">
+    <div class="sec-head">
+        <div class="sec-label">Proceso</div>
+        <h2 class="sec-title">Así de simple<br><span class="grad">es usar GOviajes</span></h2>
+    </div>
+    <div class="steps">
+        <div class="step">
+            <div class="step-num">1</div>
+            <h3>Escribinos por WhatsApp</h3>
+            <p>Mandanos un mensaje con tu destino y horario. Nada más.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <h3>Confirmamos tu viaje</h3>
+            <p>Te confirmamos conductor y precio al instante. Sin sorpresas.</p>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <h3>Tu conductor llega</h3>
+            <p>A tiempo y en tu puerta. Así de fácil te movés con GOviajes.</p>
+        </div>
+    </div>
+</section>
+
+<!-- BANDA WA -->
+<div class="wa-band">
+    <div class="big">📱</div>
+    <h2>Sin apps. <span style="color:#25D366">Solo WhatsApp.</span></h2>
+    <p>La forma más simple de pedir un viaje. Sin descargar nada, sin crear cuentas. Un mensaje y listo.</p>
+    <a href="https://wa.me/5493878831102" class="btn-wa" style="display:inline-flex">💬 Escribir ahora</a>
+</div>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+    <div class="cta-inner">
+        <div class="sec-label" style="margin-bottom:1.5rem">GOviajes</div>
+        <h2>¿Listo para <span class="grad">moverte mejor?</span></h2>
+        <p>Tecnología local para el norte argentino.</p>
+        <div class="cta-btns">
+            <a href="https://wa.me/5493878831102" class="btn-wa">💬 Pedir viaje ahora</a>
+            <a href="https://instagram.com/goviajes.arg" target="_blank" class="btn-ghost">📸 Seguinos en Instagram</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div class="footer-brand">
+            <div class="footer-logo-img">
+                <img src="assets/Logo iluminado.jpeg" alt="GOviajes">
+            </div>
+            <p>Tecnología local para moverte mejor. Conectamos pasajeros con conductores en el norte argentino, sin apps complicadas.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Empresa</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                <li><a href="index.html#ciudades">Ciudades</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="terminos.html">Términos de Servicio</a></li>
+                <li><a href="privacidad.html">Política de Privacidad</a></li>
+                <li><a href="https://instagram.com/goviajes.arg" target="_blank">Instagram</a></li>
+                <li><a href="mailto:augustocastroo38@gmail.com">Email</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 GOviajes · Norte Argentino · Todos los derechos reservados</p>
+        <div class="footer-social">
+            <a href="https://instagram.com/goviajes.arg" target="_blank" title="Instagram">📸</a>
+            <a href="https://wa.me/5493878831102" title="WhatsApp">💬</a>
+        </div>
+    </div>
+</footer>
+
+<!-- FAB -->
+<a href="https://wa.me/5493878831102" class="fab" title="Pedir viaje">💬</a>
+
+<script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
+
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.card, .city-row, .step').forEach(el => {
+        el.style.opacity='0'; el.style.transform='translateY(26px)';
+        el.style.transition='opacity .6s ease, transform .6s ease';
+        obs.observe(el);
+    });
+</script>
+</body>
+</html>
