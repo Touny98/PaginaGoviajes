@@ -2,7 +2,7 @@
 
 > **Multi-tenant ride-hailing platform built for Latin America. No app download. Runs entirely through WhatsApp.**
 
-[Live Product](https://touny98.github.io/PaginaGoviajes) · [Acquisition & Partnership Inquiries](mailto:augustocastroo38@gmail.com)
+[Live Product](https://touny98.github.io/GoViajes-Platform) · [Acquisition & Partnership Inquiries](mailto:augustocastroo38@gmail.com)
 
 ---
 
